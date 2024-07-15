@@ -4,9 +4,9 @@ import Card from 'react-bootstrap/Card'
 import Button from 'react-bootstrap/Button'
 import Form from 'react-bootstrap/Form'
 
-import { FaHammer, FaKey } from 'react-icons/fa'
+import { FaHammer, FaKey, FaTimes } from 'react-icons/fa'
 
-const AuthForm = ({token,handleToken,storeToken}) => {
+const AuthForm = ({token,showForm,handleShowForm,handleToken,storeToken}) => {
     return (
         <>
         <br/>
@@ -18,14 +18,14 @@ const AuthForm = ({token,handleToken,storeToken}) => {
                 {token}
                 </Card.Text>
                 <br/>
-                <Form>
+                <Form onSubmit={storeToken}>
                     <Form.Group className="mb-3" controlId="formBasicText">
                         <Form.Label>Token</Form.Label>
-                        <Form.Control type="text" placeholder="Enter token" onChange={handleToken} />
+                        <Form.Control type="text" value={token} placeholder="Enter token" onChange={handleToken} />
                     </Form.Group>
-                    <Button variant="primary" type="submit" onClick={storeToken}>  <FaHammer /> Set Token </Button>
+                    <Button variant="primary" onClick={storeToken}>  <FaHammer /> Set Token </Button>
+                    { showForm ? <Button variant="secondary" onClick={handleShowForm}>  <FaTimes /> Cancel </Button> : null }
                 </Form>
-
             </Card.Body>
         </Card>
         </>
@@ -57,13 +57,13 @@ const Auth = () => {
 
     if (token === '' || showForm) {
         return (
-            <AuthForm {...{token,handleToken,storeToken}} />
+            <AuthForm {...{token,showForm,handleShowForm,handleToken,storeToken}} />
         )
     }
 
     return (
         <>
-        <Button variant="primary" onClick={handleShowForm}> <FaKey /> Show Form</Button>
+        <Button variant="primary" onClick={handleShowForm}> <FaKey /> Auth Token</Button>
         </>
     )
 }

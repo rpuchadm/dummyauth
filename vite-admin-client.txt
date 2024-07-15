@@ -3,3 +3,7 @@ npm create vite@latest vite-admin-client -- --template react
   cd vite-admin-client
   npm install
   npm run dev
+
+  npm install --save bootstrap react-bootstrap
+  npm install --save react-router-dom
+  npm install --save react-icons
