@@ -1,0 +1,5 @@
+npm create vite@latest vite-admin-client -- --template react
+
+  cd vite-admin-client
+  npm install
+  npm run dev
