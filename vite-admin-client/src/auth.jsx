@@ -24,6 +24,7 @@ const AuthForm = ({token,showForm,handleShowForm,handleToken,storeToken}) => {
                         <Form.Control type="text" value={token} placeholder="Enter token" onChange={handleToken} />
                     </Form.Group>
                     <Button variant="primary" onClick={storeToken}>  <FaHammer /> Set Token </Button>
+                    {" "}
                     { showForm ? <Button variant="secondary" onClick={handleShowForm}>  <FaTimes /> Cancel </Button> : null }
                 </Form>
             </Card.Body>
@@ -63,6 +64,7 @@ const Auth = () => {
 
     return (
         <>
+        <br/>
         <Button variant="primary" onClick={handleShowForm}> <FaKey /> Auth Token</Button>
         </>
     )
